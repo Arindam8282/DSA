@@ -8,6 +8,28 @@ class DoublyLinkedList:
     # Constructor
     def __init__(self):
         print('Doubly Linked List created')
+
+    def insertAtBeg(self,data):
+        newNode = Node(data)
+        newNode.next = self.HEAD
+        self.HEAD.prev = newNode
+        self.HEAD = self.HEAD.prev
+
+    def insertAt(self,data,pos):
+        counter = 1
+        itr = self.HEAD
+        flag = 0
+        if(counter==pos): self.insertAtBeg(data); return
+        while itr!=None:
+            counter+=1
+            if(counter==pos): flag=1;break
+            itr = itr.next
+        if(flag):
+            newNode = Node(data)
+            newNode.next = itr.next
+            newNode.prev = itr
+            itr.next = newNode
+            itr.next.prev = newNode
     
     def push(self,data):
         if(self.HEAD==None):
@@ -48,12 +70,17 @@ class DoublyLinkedList:
             print(itr.data)
             itr = itr.next
 
-# list = DoublyLinkedList()
-# list.push(10)
-# list.pop()
-# list.push(11)
-# list.push(5)
-# list.push(-100)
-# list.push(76)
-# list.pop()
-# list.display()
+list = DoublyLinkedList()
+list.push(10)
+list.pop()
+list.push(11)
+list.push(5)
+list.push(-100)
+list.push(76)
+list.pop()
+list.insertAtBeg(-9)
+list.insertAtBeg(83)
+list.insertAtBeg(69)
+list.insertAt(21,5)
+
+list.display()

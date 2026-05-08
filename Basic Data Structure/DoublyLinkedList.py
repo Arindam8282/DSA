@@ -41,6 +41,12 @@ class DoublyLinkedList:
             self.TAIL.next = newNode
             self.TAIL = self.TAIL.next
 
+    def delFromBeg(self):
+        ptr = self.HEAD
+        self.HEAD = self.HEAD.next
+        del ptr
+        self.HEAD.prev = None
+
     def pop(self):
         data = None
         if(self.HEAD==None):
@@ -57,7 +63,19 @@ class DoublyLinkedList:
             del self.TAIL.next
             self.TAIL.next = None
         print(data,' Deleted')
-
+    
+    def delFromPos(self,pos):
+        counter = 1
+        if(pos==counter): self.delFromBeg();return
+        itr = self.HEAD
+        while itr.next!=None:
+            counter+=1
+            if(counter==pos):break
+            itr = itr.next
+        ptr = itr.next
+        itr.next = ptr.next
+        ptr.next.prev = itr
+        del ptr
 
 
     def display(self):
@@ -82,5 +100,8 @@ list.insertAtBeg(-9)
 list.insertAtBeg(83)
 list.insertAtBeg(69)
 list.insertAt(21,5)
+list.delFromPos(5)
+list.delFromPos(5)
+list.delFromPos(5)
 
 list.display()

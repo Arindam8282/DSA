@@ -1,7 +1,7 @@
-from LinkedList import Node
+from LinkedList import Node,LinkedList
 
 #Doubly Linked List
-class DoublyLinkedList:
+class DoublyLinkedList(LinkedList):
     HEAD = None
     TAIL = None
 
@@ -28,8 +28,9 @@ class DoublyLinkedList:
             newNode = Node(data)
             newNode.next = itr.next
             newNode.prev = itr
+            if(itr.next):
+                itr.next.prev = newNode
             itr.next = newNode
-            itr.next.prev = newNode
     
     def push(self,data):
         if(self.HEAD==None):
@@ -68,14 +69,20 @@ class DoublyLinkedList:
         counter = 1
         if(pos==counter): self.delFromBeg();return
         itr = self.HEAD
+        flag = 0
         while itr.next!=None:
             counter+=1
-            if(counter==pos):break
             itr = itr.next
-        ptr = itr.next
-        itr.next = ptr.next
-        ptr.next.prev = itr
-        del ptr
+            if(counter==pos): flag = 1; break
+        # print(itr.data)
+        if(flag):
+            if(itr==self.TAIL): self.pop();return
+            ptrPrev = itr.prev
+            ptrNext = itr.next
+            ptrPrev.next = ptrNext
+            if(ptrNext):
+                ptrNext.prev = ptrPrev
+            del itr
 
 
     def display(self):
@@ -100,8 +107,12 @@ list.insertAtBeg(-9)
 list.insertAtBeg(83)
 list.insertAtBeg(69)
 list.insertAt(21,5)
+list.display()
+list.delFromPos(6)
+list.delFromPos(6)
 list.delFromPos(5)
-list.delFromPos(5)
-list.delFromPos(5)
-
+list.display()
+list.reverse()
+list.display()
+list.reverse()
 list.display()

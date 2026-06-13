@@ -109,6 +109,26 @@ class CircularLinkedList(LinkedList):
 
     def reverse(self):
         self.reversed = not self.reversed
+
+    def palti(self):
+        prev = self.TAIL
+        cur = self.HEAD
+        nxt = self.HEAD.next
+        while cur!=self.TAIL:
+            cur.next = prev
+            cur.prev = nxt
+            prev = cur
+            cur = nxt
+            nxt = nxt.next
+        cur.next = prev
+        cur.prev = nxt
+        prev = cur
+        cur = nxt
+        nxt = nxt.next
+        temp = self.HEAD
+        self.HEAD = self.TAIL
+        self.TAIL = temp
+        
     
     def display(self):
         print("Doubly Circular LinkedList: ")
@@ -140,8 +160,8 @@ list1.insertAt(22,7)
 # list1.deleteAtBeg()
 # list1.display()
 # list1.deleteAtEnd()
-list1.display()
+# list1.display()
 list1.reverse()
 list1.display()
-list1.reverse()
+list1.palti()
 list1.display()

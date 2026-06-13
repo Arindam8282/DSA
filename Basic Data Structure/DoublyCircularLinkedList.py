@@ -1,6 +1,6 @@
 from LinkedList import Node,LinkedList
 
-class CircularLinkedList(LinkedList):
+class DoublyCircularLinkedList(LinkedList):
     HEAD = TAIL = None
     reversed = False
     def __init__(self):
@@ -145,7 +145,7 @@ class CircularLinkedList(LinkedList):
                 itr = itr.next
         print(itr.data)
     
-list1 = CircularLinkedList()
+list1 = DoublyCircularLinkedList()
 list1.insertAtBeg(10)
 list1.insertAtBeg(-10)
 list1.insertAtBeg(7)

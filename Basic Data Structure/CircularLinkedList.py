@@ -36,6 +36,25 @@ class CircularLinkedList(LinkedList):
     def insertAt(self,data,pos):
         if(self.HEAD==None):
             self.__newNode(data)
+        else:
+            counter = 1
+            if(counter==pos): self.insertAtBeg(data); return
+            itr = self.HEAD
+            flag = 0
+            while itr!=self.TAIL:
+                counter += 1
+                if(counter==pos): flag = 1; break
+                itr = itr.next
+            itr = itr.next
+            counter += 1
+            if(counter==pos): flag = 1
+            if flag:
+                if(itr==self.TAIL): self.insertAtEnd(data); return
+                newNode = Node(data)
+                newNode.next = itr
+                itr.prev.next = newNode
+                newNode.prev = itr.prev
+                itr.prev = newNode
 
     def deleteAtBeg(self):
         pass
@@ -56,5 +75,8 @@ list1.insertAtBeg(-10)
 list1.insertAtBeg(7)
 list1.insertAtEnd(68)
 list1.insertAtEnd(5)
+list1.insertAt(1,2)
+list1.insertAt(4,2)
+list1.insertAt(22,7)
 
 list1.display()

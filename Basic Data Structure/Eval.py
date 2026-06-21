@@ -23,6 +23,7 @@ class Eval:
                 else:
                     while self.precedence(ch)<=self.precedence(operatorStack.top()):
                         expressionStack.push(operatorStack.pop())
+                    operatorStack.push(ch)
             else:
                 expressionStack.push(ch)
 

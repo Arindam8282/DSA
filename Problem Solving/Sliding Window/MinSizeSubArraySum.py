@@ -22,9 +22,27 @@ def minSizeSubArraySum(nums:[int],target:int) -> int:
             windowsum -= nums[lp]
             lp+=1
     return windowDict[target] if target in windowDict else 0
+def minSizeSubArraySum2(nums:[int],target:int)->int:
+    lp = 0
+    windowsum = 0
+    min_length = float('inf')
+    for rp in range(len(nums)):
+        windowsum+=nums[rp]
+        while windowsum>=target:
+            winlength = rp-lp+1
+            if(winlength<min_length):
+                min_length = winlength
+            windowsum -= nums[lp]
+            lp+=1
+    return min_length
+
 
 print(minSizeSubArraySum([1,1,1,1,1,1,1,1],11))
 print(minSizeSubArraySum([1,4,4],4))
-print(minSizeSubArraySum([2,3,1,2,4,3],7))
+print(minSizeSubArraySum2([2,3,1,2,4,3],7))
+print(minSizeSubArraySum2([5,1,3,5,10,7,4,9,2,8],15))
+print(minSizeSubArraySum2([1,2,3,4,5],11))
+
+
 
 

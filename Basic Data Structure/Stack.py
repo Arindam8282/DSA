@@ -18,11 +18,9 @@ class Stack:
         if(self.isEmpty()):
             self.HEAD = Node(data)
         else:
-            itr = self.HEAD
-            while itr.next!=None:
-                itr = itr.next
-            itr.next = Node(data)
-            itr = itr.next
+            newNode = Node(data)
+            newNode.next = self.HEAD
+            self.HEAD = newNode
 
     def pop(self):
         if(self.isEmpty()):
@@ -40,13 +38,14 @@ class Stack:
                 itr.next = None
                 del temp
                 
-    def display(self):
-        print('Stack Print: ')
-        itr = self.HEAD
-        while itr!=None:
-            print(itr.data)
-            itr = itr.next
-
+    def display(self,node = None):
+        if(node==None):
+            print('Stack Print: ')
+            self.display(self.HEAD)
+        else:
+            if node.next:
+                self.display(node.next)
+            print(node.data)
 st = Stack()
 st.push(3)
 st.push(-10)

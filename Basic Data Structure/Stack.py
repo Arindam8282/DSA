@@ -29,14 +29,17 @@ class Stack:
         self.HEAD = self.HEAD.next
         return data
 
-    def display(self,node = None):
+    def display(self,node = None,reverse=False):
         if(node==None):
             print('Stack Print: ')
             self.display(self.HEAD)
         else:
-            print(node.data)
+            if(not reverse):
+                print(node.data)
             if node.next:
                 self.display(node.next)
+            if(reverse):
+                print(node.data)
 
 
 

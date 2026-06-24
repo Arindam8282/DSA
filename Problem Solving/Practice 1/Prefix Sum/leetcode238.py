@@ -1,12 +1,12 @@
 def productExceptSelf(nums: [int]) -> [int]:
+    outlist = [1]*len(nums)
     totalPro = 1
-    for i in nums:
-        totalPro*=i
-    leftPro = 1
-    outlist = []
     for i in range(len(nums)):
-        rightPro = (totalPro // leftPro) // nums[i]
-        outlist.append(leftPro*rightPro)
+        outlist[i] = totalPro
+        totalPro*=nums[i]
+    leftPro = 1
+    for i in range(len(nums)-1,-1,-1):
+        outlist[i] *= leftPro
         leftPro *= nums[i]
     return outlist
 print(productExceptSelf([1,2,3,4]))

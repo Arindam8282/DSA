@@ -98,5 +98,5 @@ ev = Eval()
 # ev.infixToPostfixStack("(A+B)*C/D").display()
 # ev.infixToPostfixStack("A+B*C/D").display()
 # ev.infixToPrefixStack("A+B*C/D").display(reverse=True)
-print(ev.postfixEvaluation("12+3*(4-5)"))
+print(ev.postfixEvaluation("12+3*(3-(4-5))"))
 

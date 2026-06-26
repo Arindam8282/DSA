@@ -17,8 +17,18 @@ def pivotIndex(nums: [int]) -> int:
             rpivot-=1 
             rightSum+=nums[rpivot]
     return -1
-print(pivotIndex([1,7,3,6,5,6]))
-print(pivotIndex([1,2,3]))
-print(pivotIndex([2,1,-1]))
+def pivotIndex2(nums:[int])-> int:
+    leftSum = 0
+    totalSum = sum(nums)
+    for i in range(len(nums)):
+        rightSum = totalSum - leftSum - nums[i]
+        if leftSum == rightSum:
+            return i
+        leftSum+=nums[i]
+    return -1
+
+print(pivotIndex2([1,7,3,6,5,6]))
+print(pivotIndex2([1,2,3]))
+print(pivotIndex2([2,1,-1]))
 
         

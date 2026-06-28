@@ -34,10 +34,9 @@ def longestSubarray(nums: [int]) -> int:
 def longestSubarray2(nums:[int])->int:
     count_zero = 0
     max_length = 0
-    left = right = 0
-    for i in range(len(nums)):
-        right+=1
-        if nums[i] == 0:
+    left = 0
+    for right in range(len(nums)):
+        if nums[right] == 0:
             count_zero += 1
         while count_zero > 1:
             if nums[left] == 0:
@@ -45,7 +44,7 @@ def longestSubarray2(nums:[int])->int:
             left += 1
         if max_length < right-left:
             max_length = right-left
-    return max_length-1
+    return max_length
 
 
 print(longestSubarray2([1,1,0,1]))

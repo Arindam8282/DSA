@@ -34,7 +34,7 @@ def minSizeSubArraySum2(nums:[int],target:int)->int:
                 min_length = winlength
             windowsum -= nums[lp]
             lp+=1
-    return min_length
+    return min_length if min_length!=float('inf') else 0
 
 
 print(minSizeSubArraySum([1,1,1,1,1,1,1,1],11))

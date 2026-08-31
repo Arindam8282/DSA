@@ -89,6 +89,27 @@ class LinkedList:
             itr = None
         print(data,' Deleted ')
         return data
+    def reverse2(self):
+        if self.HEAD==None or self.HEAD.next==None:return
+        prev = self.HEAD
+        curr = self.HEAD.next
+        if curr.next!=None:
+            next = curr.next
+            prev.next = None
+            while curr.next!=None:
+                curr.next = prev
+                prev = curr
+                curr = next
+                next = next.next
+            curr.next = prev
+            prev = curr
+            curr = next
+            self.HEAD = prev
+                
+        else:
+            curr.next = self.HEAD
+            self.HEAD.next = None
+            self.HEAD = curr
 
     def reverse(self,node=None):
         if(node==None):
@@ -125,7 +146,7 @@ class LinkedList:
             print(itr.data)
             itr = itr.next
 
-# list = LinkedList()
+list = LinkedList()
 # list.push(10)
 # list.push(5)
 # list.push(101)
@@ -141,7 +162,10 @@ class LinkedList:
 # list.insertAt(11,2)
 # list.deleteAtBeg()
 # list.deleteAt(5)
-# list.reverse()
+# list.display()
+# list.reverse2()
+# list.display()
+# list.reverse2()
 # list.display()
 # print(list.length())
 # list.print()

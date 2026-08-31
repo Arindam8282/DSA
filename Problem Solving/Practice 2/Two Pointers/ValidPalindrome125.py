@@ -1,38 +1,28 @@
-
-def validPalindrome(s: str) -> bool:
-    lowerStr = ''.join(char for char in s if char.isalnum()).lower()
-    print(lowerStr)
-    left = 0
-    right = len(lowerStr)-1
-    flag = False
-    while left<=right:
-        if(lowerStr[left]!=lowerStr[right]):
-            flag = True
-            break
-        else:
-            left += 1
-            right -= 1
-    return not flag
-
-def validPalindrome2(s: str) -> bool:
-    left = 0
-    right = len(s)-1
-    while left<right:
-        if not s[left].isalnum():
-            left += 1
-        elif not s[right].isalnum():
-            right -= 1
-        else:
-            if s[left].lower() != s[right].lower():
-                return False
-            left += 1
-            right -= 1
+def validPalindrome(sentence:str) -> bool:
+    trimmedWord = sentence.replace(' ','').replace(';','').replace(':','').replace(',','').lower()
+    print(trimmedWord)
+    lp = 0
+    rp = len(trimmedWord) - 1
+    while lp<rp:
+        if trimmedWord[lp]!=trimmedWord[rp]:
+            return False
+        lp += 1
+        rp -= 1
     return True
-
-def validPalindrome3(s: str) -> bool:
-    lowerStr = ''.join(char for char in s if char.isalnum()).lower()
-    return lowerStr[::-1]==lowerStr 
-
-    
-print(validPalindrome3("race a e-car"))
-# race a car
+def validPalindrome2(sentence:str) -> bool:
+    lp = 0
+    rp = len(sentence) - 1
+    while lp<rp:
+        if not sentence[lp].isalnum():
+            lp += 1
+            continue
+        if not sentence[rp].isalnum():
+            rp -= 1
+            continue
+        if sentence[lp].lower()!=sentence[rp].lower():
+            return False
+        lp += 1
+        rp -= 1
+    return True
+print(validPalindrome2("a man; a plan; a canal; panama"))
+print(validPalindrome2("race, a , car"))

@@ -88,19 +88,19 @@ class Tree:
                 self.postorder(root.right)
             print(root.data,end=',')
 
-preOrder = [1,2,4,8,9,10,11,5,3,6,7]
-inOrder = [8,4,10,9,11,2,5,1,6,3,7]
-postOrder = [8,10,11,9,4,5,2,6,7,3,1]
-tree = Tree()
-tree.constructTree(postOrder,inOrder)
-print()
-tree.inorder()
-print()
+# preOrder = [1,2,4,8,9,10,11,5,3,6,7]
+# inOrder = [8,4,10,9,11,2,5,1,6,3,7]
+# postOrder = [8,10,11,9,4,5,2,6,7,3,1]
+# tree = Tree()
+# tree.constructTree(postOrder,inOrder)
+# print()
+# tree.inorder()
+# print()
 
-tree.preorder()
-print()
+# tree.preorder()
+# print()
 
-tree.postorder()
+# tree.postorder()
 
 
 

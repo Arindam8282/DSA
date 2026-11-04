@@ -16,6 +16,9 @@ class BSTree(Tree):
     
     def insert(self, data):
         self.root = self.__insertNode(data,self.root)
+        
+    def delete(self,data):
+        pass
 
     
 list1 = [11,6,8,19,4,10,5,17,43,49,31]
